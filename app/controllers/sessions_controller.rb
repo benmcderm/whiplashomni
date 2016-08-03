@@ -1,8 +1,11 @@
 class SessionsController < ApplicationController
   def create
     auth_hash = request.env['omniauth.auth']['credentials']['token']
+    WhiplashApi::Base.testing!
+    WhiplashApi::Base.api_version = 2
+    WhiplashApi::Base.api_key = auth_hash
 
-    render :text => auth_hash.inspect
+    render '/orders'
   end
   # def create
   #   auth = request.env['rack.auth']
