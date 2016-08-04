@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     token = request.env['omniauth.auth']['credentials']['token']
     WhiplashApi::Base.testing!
     WhiplashApi::Base.api_version = 2
-    WhiplashApi::Base.api_key = token
+    WhiplashApi::Base.api_key = params[:code]
     if token
       orders = WhiplashApi::Order.all(:params => {:limit => 10})
     else
