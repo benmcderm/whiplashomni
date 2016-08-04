@@ -1,8 +1,10 @@
 <h1>All Orders</h1>
-
-<% @orders.each_with_index do |order, i| %>
-<%= "#{i + 1}. \n" %>
-<%= "Id: #{order.id} \n" %>
-<%= "Billed?: #{order.billed} \n" %>
-<%= "Email: #{order.email} \n" %>
-<% end %>
+<ul>
+  <% @orders.each_with_index do |order, i| %>
+    <li>
+    <%= "Id: #{order.id} \n" %>
+    <%= "Billed?: #{order.billed} \n" %>
+    <%= "Email: #{order.email} \n" %>
+    </li>
+  <% end %>
+</ul>
