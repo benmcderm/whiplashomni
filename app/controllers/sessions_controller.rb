@@ -23,9 +23,9 @@ class SessionsController < ApplicationController
     WhiplashApi::Base.api_version = 2
     WhiplashApi::Base.customer_id = 242
     WhiplashApi::Base.api_key = auth_hash['credentials']['token']
-    orders = WhiplashApi::Order.all
+    WhiplashApi::Order.all
 
-    render :json => orders
+    render :text => "workd"
   end
 
 
