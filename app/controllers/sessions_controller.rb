@@ -15,10 +15,10 @@ class SessionsController < ApplicationController
 
   def create
 
+    WhiplashApi::Base.testing!
     WhiplashApi::Base.api_version = 2
     WhiplashApi::Base.api_key = request.env['omniauth.auth']['credentials']['token']
     WhiplashApi::Base.customer_id = request.env['omniauth.auth']['uid']
-    WhiplashApi::Base.testing!
     orders = WhiplashApi::Order.all
 
     render :text => orders
