@@ -17,11 +17,11 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     WhiplashApi::Base.testing!
     WhiplashApi::Base.api_version = 2
-    WhiplashApi::Base.api_key = '23447e1eaeddf2d1c4af4c9cf88524af2863cb1f72d500dd9328b34735a3f3b0'
-    WhiplashApi::Base.customer_id = 242
+    WhiplashApi::Base.api_key = auth_hash['credentials']['token']
+    WhiplashApi::Base.customer_id = request.env['omniauth.auth']['extra']['raw_info']['customer_ids'].first
     orders = WhiplashApi::Order.all
 
-    render :json => auth_hash
+    render :json => orders
   end
 
 
