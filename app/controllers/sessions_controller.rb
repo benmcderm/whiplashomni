@@ -36,8 +36,8 @@ class SessionsController < ApplicationController
 
   def create
     auth_hash = request.env['omniauth.auth']
-    token = request.env['omniauth.auth']['credentials']['token']
-    cust_id = request.env['omniauth.auth']['extra']['raw_info']['customer_ids'][0]
+    token = auth_hash['credentials']['token']
+    cust_id = auth_hash['extra']['raw_info']['customer_ids'][0].to_s
     authy = "Token: " + token + "  Customer ID:" + cust_id
     WhiplashApi::Base.testing!
     WhiplashApi::Base.api_version = 2
@@ -45,7 +45,7 @@ class SessionsController < ApplicationController
     WhiplashApi::Base.api_key = token
     # orders = WhiplashApi::Order.all
 
-    render :text => cust_id
+    render :text => authy
   end
 
 
