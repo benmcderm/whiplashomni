@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     render json: request.env['omniauth.auth']
     WhiplashApi::Base.testing!
-    WhiplashApi::Base.api_version = 2
     WhiplashApi::Base.api_key = auth_hash['credentials']['token']
     orders = WhiplashApi::Order.all
 
