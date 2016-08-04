@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
     WhiplashApi::Base.customer_id = 242
     orders = WhiplashApi::Order.all
 
-    render :text => auth_hash
+    render :json => auth_hash
   end
 
 
