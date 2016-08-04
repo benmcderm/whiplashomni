@@ -45,5 +45,5 @@ module OmniAuth
   end
 end
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :whiplash, 'bc6b13345a890812b0c4f5c849dd504a0ceb041ca3c14ab69d09f7f4d2efea9f', 'b5f3b0ba5595690510bfa0d40386b7562c10c34f5899f2c8a85fd46ebb3ad4cf', scope: 'read_orders read_user'
+  provider :whiplash, ENV['WHIPLASH_CLIENT_ID'], ENV['WHIPLASH_CLIENT_SECRET'], scope: 'read_orders read_user'
 end
