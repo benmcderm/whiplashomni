@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController
-  # def create
-  # auth_hash = 'Token' + request.env['omniauth.auth']['credentials']['token'] + 'Secret: ' + request.env['omniauth.auth']['credentials']['secret']
-  #
-  #   render :text => auth_hash
-  # end
+  def create
+  auth_hash = request.env['omniauth.auth']
+    render :json => auth_hash
+  end
 
   # def create
   # WhiplashApi::Base.testing!
@@ -29,16 +28,21 @@ class SessionsController < ApplicationController
   #   render :text => is_it_string
   # end
 
-  def create
-    auth_hash = request.env['omniauth.auth']
-    WhiplashApi::Base.testing!
-    WhiplashApi::Base.api_version = 2
-    WhiplashApi::Base.customer_id = 242
-    WhiplashApi::Base.api_key = '23447e1eaeddf2d1c4af4c9cf88524af2863cb1f72d500dd9328b34735a3f3b0'
-    orders = WhiplashApi::Order.all
 
-    render :json => orders
-  end
+
+
+
+
+  # def create
+  #   auth_hash = request.env['omniauth.auth']
+  #   WhiplashApi::Base.testing!
+  #   WhiplashApi::Base.api_version = 2
+  #   WhiplashApi::Base.customer_id = 242
+  #   WhiplashApi::Base.api_key = '23447e1eaeddf2d1c4af4c9cf88524af2863cb1f72d500dd9328b34735a3f3b0'
+  #   orders = WhiplashApi::Order.all
+  #
+  #   render :json => orders
+  # end
 
 
 
