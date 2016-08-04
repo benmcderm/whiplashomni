@@ -1,1 +1,4 @@
-<h1>Hi</h1>
+<% @auth.each do |key, value| %>
+  <h1><%= key %> </h1>
+  <p><%= value %> </p>
+<% end %>
