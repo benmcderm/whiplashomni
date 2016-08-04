@@ -14,11 +14,11 @@ class SessionsController < ApplicationController
 
 
   def create
-    p request.env['rack.auth']['credentials']
+    p request.env['omniauth.auth']['credentials']
 
     WhiplashApi::Base.testing!
     WhiplashApi::Base.api_version = 2
-    WhiplashApi::Base.api_key = request.env['rack.auth']['credentials']['token']
+    WhiplashApi::Base.api_key = request.env['omniauth.auth']['credentials']['token']
     orders = WhiplashApi::Order.all
 
     p orders
